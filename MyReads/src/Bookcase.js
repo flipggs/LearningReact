@@ -1,10 +1,20 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import Book from './Book'
+import PropTypes from 'prop-types'
+import Shelf from './Shelf';
 
 class Bookcase extends Component {
+    static propTypes = {
+        books: PropTypes.array.isRequired
+    }
 
     render() {
+        const { books } = this.props;
+
+        const booksCurrentlyReading = books.filter(book => book.shelf === "currentlyReading");
+        const booksWantToRead = books.filter(book => book.shelf === "wantToRead");
+        const booksRead = books.filter(book => book.shelf === "read");
+
         return (
             <div className="list-books">
                 <div className="list-books-title">
@@ -12,17 +22,9 @@ class Bookcase extends Component {
                 </div>
                 <div className="list-books-content">
                     <div>
-                        <div className="bookshelf">
-                            <h2 className="bookshelf-title">Currently Reading</h2>
-                            <div className="bookshelf-books">
-                                <ol className="books-grid">
-                                    <li>
-                                        <Book />
-                                    </li>
-                                </ol>
-                            </div>
-                        </div>
-                        
+                        <Shelf books={booksCurrentlyReading} title="Currently Reading" />
+                        <Shelf books={booksWantToRead} title="Want To Read"/>
+                        <Shelf books={booksRead} title="Read"/>
                     </div>
                 </div>
                 <div className="open-search">
