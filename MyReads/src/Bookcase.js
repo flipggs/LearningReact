@@ -9,7 +9,7 @@ class Bookcase extends Component {
     }
 
     render() {
-        const { books } = this.props;
+        const { books, onChangeShelf } = this.props;
 
         const booksCurrentlyReading = books.filter(book => book.shelf === "currentlyReading");
         const booksWantToRead = books.filter(book => book.shelf === "wantToRead");
@@ -22,9 +22,9 @@ class Bookcase extends Component {
                 </div>
                 <div className="list-books-content">
                     <div>
-                        <Shelf books={booksCurrentlyReading} title="Currently Reading" />
-                        <Shelf books={booksWantToRead} title="Want To Read"/>
-                        <Shelf books={booksRead} title="Read"/>
+                        <Shelf books={booksCurrentlyReading} title="Currently Reading" onChangeShelf={onChangeShelf} />
+                        <Shelf books={booksWantToRead} title="Want To Read" onChangeShelf={onChangeShelf} />
+                        <Shelf books={booksRead} title="Read" onChangeShelf={onChangeShelf} />
                     </div>
                 </div>
                 <div className="open-search">
