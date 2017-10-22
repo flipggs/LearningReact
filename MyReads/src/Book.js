@@ -4,7 +4,7 @@ class Book extends Component {
 
     render() {
 
-        const { book, onChangeShelf, shelfTitle } = this.props;
+        const { book, onChangeShelf, shelfOption } = this.props;
 
         return (
             <li>
@@ -16,11 +16,12 @@ class Book extends Component {
                                 const shelf = event.target.value;
                                 onChangeShelf(book, shelf);
                             }}
-                                value={shelfTitle}>
+                                value={shelfOption}
+                            >
                                 <option value="none" disabled>Move to...</option>
-                                <option value="currentlyReading" selected={book.shelf === "currentlyReading"} >Currently Reading</option>
-                                <option value="wantToRead" selected={book.shelf === "wantToRead"} >Want to Read</option>
-                                <option value="read" selected={book.shelf === "read"} >Read</option>
+                                <option value="currentlyReading"  >Currently Reading</option>
+                                <option value="wantToRead" >Want to Read</option>
+                                <option value="read"  >Read</option>
                                 <option value="none">None</option>
                             </select>
                         </div>

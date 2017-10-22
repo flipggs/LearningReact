@@ -22,9 +22,19 @@ class Bookcase extends Component {
                 </div>
                 <div className="list-books-content">
                     <div>
-                        <Shelf books={booksCurrentlyReading} title="Currently Reading" onChangeShelf={onChangeShelf} />
-                        <Shelf books={booksWantToRead} title="Want To Read" onChangeShelf={onChangeShelf} />
-                        <Shelf books={booksRead} title="Read" onChangeShelf={onChangeShelf} />
+                        {booksCurrentlyReading.length > 0 && (
+                            <Shelf books={booksCurrentlyReading} title="Currently Reading" onChangeShelf={onChangeShelf} />
+                        )}
+                        
+                        {(booksWantToRead.length > 0 && (
+                            <Shelf books={booksWantToRead} title="Want To Read" onChangeShelf={onChangeShelf} />
+                        ))}
+
+                        
+                        { (booksRead.length > 0 && (
+                            <Shelf books={booksRead} title="Read" onChangeShelf={onChangeShelf} />
+                        ))}
+                        
                     </div>
                 </div>
                 <div className="open-search">
