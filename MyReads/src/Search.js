@@ -17,20 +17,27 @@ class Search extends Component {
         const { books, onChangeShelf } = this.props;
         const query = this.state.query;
 
-        let showingBooks
+        let showingBooks = [], booksTitle, booksAuthors
         if (query) {
             const match = new RegExp(escapeRegExp(query))
-            showingBooks = books.filter(book => match.test(book.title))
+            booksTitle = books.filter(book => match.test(book.title))
 
-            if (showingBooks.length === 0){
-                showingBooks = books.filter(function(book){
-                    const b = book.authors.filter(author => match.test(author));
-                    
-                    if (b.length > 0)
-                        return book
-                    return null;
-                })
-            }
+            booksAuthors = books.filter(function (book) {
+                const b = book.authors.filter(author => match.test(author));
+
+                if (b.length > 0)
+                    return book
+                return null;
+            })
+
+            booksTitle.forEach(function(element) {
+                showingBooks.push(element)    
+            }, this);
+
+            booksAuthors.forEach(function(element) {
+                showingBooks.push(element)    
+            }, this);
+            
         }
         else {
             showingBooks = []
