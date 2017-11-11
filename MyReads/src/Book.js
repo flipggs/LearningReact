@@ -26,8 +26,8 @@ class Book extends Component {
                             </select>
                         </div>
                     </div>
-                    <div className="book-title">{book.authors[0]}</div>
-                    <div className="book-authors">{book.title}</div>
+                    <div className="book-title">{book.title}</div>
+                    <div className="book-authors">{book.authors[0]}</div>
                 </div>
             </li>
         )
